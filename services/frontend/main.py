@@ -5,6 +5,7 @@ import dash_html_components as html
 import dash_table as dt
 
 
+
 @server.route("/")
 def hello_world():
     return jsonify(hello="world")
@@ -17,7 +18,7 @@ app.layout = html.Div(
     ]
 )
 
-@server.route("/dash")
+@server.route("/")
 def my_dash_app():
     return app.index()
 

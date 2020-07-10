@@ -85,8 +85,8 @@ DATABASES = {
     # }
     'default' : {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'fsm_test', #'os.path.join(BASE_DIR, 'db.sqlite3')'
-        'HOST': os.environ.get('PGHOST', 'localhost'),
+        'NAME': os.environ.get('ORACLE_DATABASE'),
+        'HOST': os.environ.get('PGHOST'),
         'PORT': os.environ.get('PGPORT'),
         'USER': os.environ.get('PGUSER'),
         'PASSWORD': os.environ.get('PGPASSWORD'),

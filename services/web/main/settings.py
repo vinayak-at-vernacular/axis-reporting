@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'h18&imd2qy7o_r^-gy)n)go4i*3j5nfd=&1ode@fczzt=ak(dk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,13 +75,21 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fsm_service', #'os.path.join(BASE_DIR, 'db.sqlite3')'
-        'HOST': 'localhost',
-        'PORT': 5432,
-        'USER': 'postgres',
-        'PASSWORD': '2Ldppd7z4mAdk1P6'
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'fsm_service', #'os.path.join(BASE_DIR, 'db.sqlite3')'
+    #     'HOST': os.environ.get('PGHOST', 'localhost'),
+    #     'PORT': os.environ.get('PGPORT'),
+    #     'USER': os.environ.get('PGUSER'),
+    #     'PASSWORD': os.environ.get('PGPASSWORD'),
+    # }
+    'default' : {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'fsm_test', #'os.path.join(BASE_DIR, 'db.sqlite3')'
+        'HOST': os.environ.get('PGHOST', 'localhost'),
+        'PORT': os.environ.get('PGPORT'),
+        'USER': os.environ.get('PGUSER'),
+        'PASSWORD': os.environ.get('PGPASSWORD'),
     }
 }
 
